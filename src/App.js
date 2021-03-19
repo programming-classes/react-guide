@@ -3,6 +3,7 @@ import Person from "./Person/Person";
 import UserOutput from "./UserOutput/UserOutput";
 import UserInput from "./UserInput/UserInput";
 import { Component } from "react";
+import person from "./Person/Person";
 
 class App extends Component {
   state = {
@@ -13,7 +14,10 @@ class App extends Component {
       { name: "Johan", age: 31 },
       { name: "Clau", age: 14 },
       { name: "Luis", age: 14 },
-      { name: "Jalberto", age: 14 },
+      { name: "Jalberto", age: 21 },
+      { name: "Fabier", age: 16 },
+      { name: "Comás", age: 19 },
+      { name: "Grodolfo", age: 23 },
     ],
     selectedPerson: 0,
     username: "hinigul",
@@ -41,26 +45,11 @@ class App extends Component {
   };
 
   renderPeople = () => {
-    const persons = this.state.persons;
     return (
       <div>
-        <Person
-          name={persons[this.state.selectedPerson].name}
-          age={persons[this.state.selectedPerson].age}
-          change={this.nameChangeHandler}
-        />
-        <Person
-          name={persons[this.state.selectedPerson].name}
-          age={persons[this.state.selectedPerson].age}
-          change={this.nameChangeHandler}
-        />
-        <Person
-          name={persons[this.state.selectedPerson].name}
-          age={persons[this.state.selectedPerson].age}
-          change={this.nameChangeHandler}
-        >
-          My Hobbies are: foooooooobear
-        </Person>
+        {this.state.persons.map((person) => (
+          <Person name={person.name} age={person.age}></Person>
+        ))}
       </div>
     );
   };
