@@ -17,19 +17,24 @@ class App extends Component {
       { id: "uwu", name: "Comás", age: 19 },
       { id: "caca", name: "Grodolfo", age: 23 },
     ],
-    selectedPerson: 0,
     username: "hinigul",
     isPeopleHidden: false,
   };
 
-  switchNameHandler = () => {
-    this.setState({ selectedPerson: (this.state.selectedPerson + 1) % 7 });
-  };
-
   changeNameHandler = (event, personId) => {
-    // Buscar a la persona correspondiente por su ID
-    // Cambiar el nombre
-    // guardar un nuevo estado con la persona nueva
+    const personIndex = this.state.persons.findIndex(
+      (person) => person.id === personId
+    );
+    const personToChange = this.state.persons.slice(
+      personIndex,
+      personIndex + 1
+    )[0];
+    personToChange.name = event.target.value;
+    const personsCopy = this.state.persons.slice(0);
+    personsCopy[personIndex] = personToChange;
+    this.setState({
+      persons: personsCopy,
+    });
   };
 
   togglePeopleHandler = () => {
@@ -64,9 +69,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hi there how is it going bro?</h1>
-        <button style={buttonStyle} onClick={this.switchNameHandler}>
-          DON'T CLICK ME!!!!!!
-        </button>
+        <button style={buttonStyle}>DON'T CLICK ME!!!!!!</button>
         <button style={buttonStyle} onClick={this.togglePeopleHandler}>
           Show/Hide people
         </button>
