@@ -1,9 +1,7 @@
 import "./App.css";
 import Person from "./Person/Person";
 import UserOutput from "./UserOutput/UserOutput";
-import UserInput from "./UserInput/UserInput";
 import { Component } from "react";
-import person from "./Person/Person";
 
 class App extends Component {
   state = {
@@ -73,11 +71,6 @@ class App extends Component {
           Show/Hide people
         </button>
         {this.state.isPeopleHidden ? null : this.renderPeople()}
-        <UserInput
-          username={this.state.username}
-          onUsernameChange={this.switchUsernameHandler}
-        />
-        <UserOutput username={this.state.username} />
         <UserOutput />
         <UserOutput />
       </div>
