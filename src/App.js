@@ -28,14 +28,10 @@ class App extends Component {
     this.setState({ selectedPerson: (this.state.selectedPerson + 1) % 7 });
   };
 
-  switchUsernameHandler = (event) => {
-    this.setState({ username: event.target.value });
-  };
-
-  nameChangeHandler = (event) => {
-    this.setState({
-      persons: [{ name: event.target.value, age: 19 }],
-    });
+  changeNameHandler = (event, personId) => {
+    // Buscar a la persona correspondiente por su ID
+    // Cambiar el nombre
+    // guardar un nuevo estado con la persona nueva
   };
 
   togglePeopleHandler = () => {
@@ -48,7 +44,12 @@ class App extends Component {
     return (
       <div>
         {this.state.persons.map((person) => (
-          <Person name={person.name} age={person.age}></Person>
+          <Person
+            key={person.id}
+            name={person.name}
+            age={person.age}
+            change={(event) => this.changeNameHandler(event, person.id)}
+          ></Person>
         ))}
       </div>
     );
