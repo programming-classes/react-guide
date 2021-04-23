@@ -22,16 +22,11 @@ class App extends Component {
   };
 
   changeNameHandler = (event, personId) => {
-    const personIndex = this.state.persons.findIndex(
+    const personsCopy = [...this.state.persons];
+    const personIndex = personsCopy.findIndex(
       (person) => person.id === personId
     );
-    const personToChange = this.state.persons.slice(
-      personIndex,
-      personIndex + 1
-    )[0];
-    personToChange.name = event.target.value;
-    const personsCopy = this.state.persons.slice(0);
-    personsCopy[personIndex] = personToChange;
+    personsCopy[personIndex].name = event.target.value;
     this.setState({
       persons: personsCopy,
     });
