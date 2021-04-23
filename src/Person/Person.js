@@ -8,7 +8,8 @@ const person = (props) => {
         I'm {props.name} and I eat {props.age} bananas a day
       </h1>
       <p>{props.children}</p>
-      <input type="text" onChange={props.change} value={props.name} />
+      <input type="text" onChange={props.changeName} value={props.name} />
+      <input type="button" onClick={props.deleteMe} value="delete me" />
     </div>
   );
 };

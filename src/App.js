@@ -32,6 +32,17 @@ class App extends Component {
     });
   };
 
+  deleteMeHandler = (personId) => {
+    const personsCopy = [...this.state.persons];
+    const personIndex = personsCopy.findIndex(
+      (person) => person.id === personId
+    );
+    personsCopy.splice(personIndex, 1);
+    this.setState({
+      persons: personsCopy,
+    });
+  };
+
   togglePeopleHandler = () => {
     this.setState({
       isPeopleHidden: !this.state.isPeopleHidden,
@@ -46,7 +57,8 @@ class App extends Component {
             key={person.id}
             name={person.name}
             age={person.age}
-            change={(event) => this.changeNameHandler(event, person.id)}
+            deleteMe={() => this.deleteMeHandler(person.id)}
+            changeName={(event) => this.changeNameHandler(event, person.id)}
           ></Person>
         ))}
       </div>
