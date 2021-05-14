@@ -8,9 +8,9 @@ import CharComponent from "./CharComponent/CharComponent";
 class App extends Component {
   state = {
     persons: [
-      { id: "dlerl", name: "Fuan", age: 19 },
-      { id: "ksfel", name: "August", age: 2020 },
-      { id: "iwler", name: "Movember", age: 2020 },
+      { id: "dlerl", name: "Baes", age: 19 },
+      { id: "ksfel", name: "Bomberto", age: 2020 },
+      { id: "iwler", name: "Jose manueh", age: 2020 },
       { id: "aguac", name: "Johan", age: 31 },
       { id: "teró", name: "Clau", age: 14 },
       { id: "trol", name: "Luis", age: 14 },
