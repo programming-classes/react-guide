@@ -1,7 +1,9 @@
 import "./App.css";
 import Person from "./Person/Person";
 import UserOutput from "./UserOutput/UserOutput";
+import ValidationComponent from "./ValidationComponent/ValidationComponent";
 import { Component } from "react";
+import CharComponent from "./CharComponent/CharComponent";
 
 class App extends Component {
   state = {
@@ -18,7 +20,8 @@ class App extends Component {
       { id: "caca", name: "Grodolfo", age: 23 },
     ],
     username: "hinigul",
-    isPeopleHidden: false,
+    isPeopleHidden: true,
+    word: "word",
   };
 
   changeNameHandler = (event, personId) => {
@@ -46,6 +49,12 @@ class App extends Component {
   togglePeopleHandler = () => {
     this.setState({
       isPeopleHidden: !this.state.isPeopleHidden,
+    });
+  };
+
+  onWordChangeHandler = (event) => {
+    this.setState({
+      word: event.target.value,
     });
   };
 
@@ -83,6 +92,15 @@ class App extends Component {
         {this.state.isPeopleHidden ? null : this.renderPeople()}
         <UserOutput />
         <UserOutput />
+        <input
+          type="text"
+          value={this.state.word}
+          onChange={this.onWordChangeHandler}
+        />
+        <ValidationComponent wordLength={this.state.word.length} />
+        {this.state.word.split("").map((letter) => {
+          return <CharComponent letter={letter} />;
+        })}
       </div>
     );
   }

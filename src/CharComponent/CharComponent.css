@@ -1,0 +1,10 @@
+.CharComponent {
+  display: inline-block;
+  margin: 10px;
+  border: 10px solid;
+  box-shadow: 0 2px 3px #cccccc;
+  padding: 30px;
+  text-align: center;
+  font-size: 30px;
+  font-family: "Baskervville", serif;
+}
