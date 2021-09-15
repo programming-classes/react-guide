@@ -1,4 +1,5 @@
 .app {
-  width: 40%;
+  min-width: 375px;
   display: inline-block;
+  color: #2970ca;
 }

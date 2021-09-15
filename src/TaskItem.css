@@ -7,6 +7,11 @@
   display: flex;
 }
 
+.task-item.checked {
+  text-decoration: line-through;
+  color: #618ab1;
+}
+
 .task-item__title {
   flex: auto;
   margin: 0 15px;

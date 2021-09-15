@@ -4,6 +4,7 @@
   border-radius: 5px;
   margin: 10px;
   padding: 20px;
+  display: block;
 }
 
 .input-component__input {
@@ -14,5 +15,6 @@
 .input-component__button {
   background-color: #e8f1f2;
   border: solid thin #13293d;
+  width: 20%;
   padding: 3px;
 }
