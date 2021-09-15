@@ -1,6 +1,7 @@
 import "./App.css";
 import TaskItem from "./TaskItem";
 import InputComponent from "./InputComponent";
+import React, {useState} from "react";
 
 const App = () => {
   return (
