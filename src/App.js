@@ -4,13 +4,51 @@ import InputComponent from "./InputComponent";
 import React, {useState} from "react";
 
 const App = () => {
+  const [taskTitle, setTaskTitle]=useState("Add a new task")
+  const [tasks, setTasks] = useState([
+    {id: "sdf",title: "Terminar mates", checked: false},
+    {id: "ap.",title: "Llamar a la abuela", checked: true},
+    {id: "wer",title: "Recoger la habitación", checked: false},
+  ]);
+
+  const deleteTask = (taskId)=>{
+    const tasksCopy = [...tasks]
+    const indexToDelete = tasksCopy.findIndex((task) => task.id === taskId)
+    tasksCopy.splice(indexToDelete, 1)
+    setTasks(tasksCopy)
+  }
+
+  const checkTaskHandler = (taskId) =>{
+    const tasksCopy = [...tasks]
+    const taskToCheck = tasksCopy.find((task) => task.id === taskId)
+    taskToCheck.checked = !taskToCheck.checked
+    setTasks(tasksCopy)
+  }
+
+  const taskTitleChangeHandler = (event)=> {
+    setTaskTitle(event.target.value)
+  }
+
+  const newTaskItemHandler = ()=>{
+    const newTaskList = [
+      {id: Math.random(), title: taskTitle, checked: false},
+      ...tasks,
+    ]
+    setTasks(newTaskList)
+  }
+
   return (
     <div className="app">
-      <InputComponent />
+      <InputComponent 
+      taskTitleChangeHandler={taskTitleChangeHandler}
+      newTaskItemHandler={newTaskItemHandler}/>
       <div className="task-items">
-        <TaskItem title="Terminar mates" />
-        <TaskItem title="Llamar a la abuela" />
-        <TaskItem title="Recoger la habitación" />
+        {tasks.map(task => 
+        <TaskItem key={task.id}
+        task={task}
+        deleteHandler={()=>deleteTask(task.id)}
+        checkHandler={()=>checkTaskHandler(task.id)}
+        />)}
       </div>
     </div>
   );
