@@ -1,6 +1,6 @@
 import "./App.css";
 import TaskItem from "./components/TaskItem";
-import InputComponent from "./components/InputComponent";
+import NewTaskItemForm from "./components/NewTaskItemForm";
 import React, { useState } from "react";
 
 function myFunction(myArgument) {
@@ -42,7 +42,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <InputComponent
+      <NewTaskItemForm
         taskTitleChangeHandler={taskTitleChangeHandler}
         newTaskItemHandler={newTaskItemHandler}
       />
