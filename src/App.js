@@ -1,6 +1,6 @@
 import "./App.css";
-import TaskItem from "./TaskItem";
-import InputComponent from "./InputComponent";
+import TaskItem from "./components/TaskItem";
+import InputComponent from "./components/InputComponent";
 import React, { useState } from "react";
 
 function myFunction(myArgument) {
