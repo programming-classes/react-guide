@@ -57,7 +57,7 @@ const App = () => {
   return (
     <div className="app">
       <NewTaskItemForm
-        taskTitleChangeHandler={taskTitleChangeHandler}
+        owners={ownwers}
         newTaskItemHandler={newTaskItemHandler}
       />
       <div className="task-items">
