@@ -3,16 +3,34 @@ import TaskItem from "./components/TaskItem";
 import NewTaskItemForm from "./components/NewTaskItemForm";
 import React, { useState } from "react";
 
-function myFunction(myArgument) {
-  return "MyReturn";
-}
+const DUMMY_TASKS = [
+  {
+    id: "sdf",
+    dueDate: "2021-10-02",
+    owner: "Mesi",
+    title: "Terminar mates",
+    checked: false,
+  },
+  {
+    id: "ap.",
+    dueDate: "2021-10-02",
+    owner: "Mesi",
+    title: "Llamar a la abuela",
+    checked: true,
+  },
+  {
+    id: "wer",
+    dueDate: "2021-10-02",
+    owner: "Fooan",
+    title: "Recoger la habitación",
+    checked: false,
+  },
+];
+const DUMMY_OWNERS = ["Mesi", "Padre Baez", "Fooaquin"];
+
 const App = () => {
-  const [taskTitle, setTaskTitle] = useState("Add a new task");
-  const [tasks, setTasks] = useState([
-    { id: "sdf", title: "Terminar mates", checked: false },
-    { id: "ap.", title: "Llamar a la abuela", checked: true },
-    { id: "wer", title: "Recoger la habitación", checked: false },
-  ]);
+  const [tasks, setTasks] = useState(DUMMY_TASKS);
+  const [ownwers] = useState(DUMMY_OWNERS);
 
   const deleteTask = (taskId) => {
     const tasksCopy = [...tasks];
