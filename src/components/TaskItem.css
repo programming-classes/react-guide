@@ -16,3 +16,7 @@
   flex: auto;
   margin: 0 15px;
 }
+
+.task-item__owner {
+  flex: auto;
+}
