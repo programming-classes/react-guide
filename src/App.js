@@ -46,13 +46,9 @@ const App = () => {
     setTasks(tasksCopy);
   };
 
-  const taskTitleChangeHandler = (event) => {
-    setTaskTitle(event.target.value);
-  };
-
-  const newTaskItemHandler = () => {
+  const newTaskItemHandler = (newTaskItem) => {
     const newTaskList = [
-      { id: Math.random(), title: taskTitle, checked: false },
+      { id: Math.random(), title: newTaskItem.title, checked: false },
       ...tasks,
     ];
     setTasks(newTaskList);
