@@ -4,16 +4,23 @@ import "./NewTaskItemForm.css";
 const NewTaskItemForm = (props) => {
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskDueDate, setNewTaskDueDate] = useState("");
+  const [newTaskOwner, setNewTaskOwner] = useState(props.owners[0]);
 
-  // Implementar los handlers de la fecha y el owner
   const newTaskTitleChangeHandler = (event) => {
     setNewTaskTitle(event.target.value);
   };
-
+  const newTaskDueDateHandler = (event) => {
+    setNewTaskDueDate(event.target.value);
+  }
+  
+  const newTaskOwnerHandler = (event) =>{
+    setNewTaskOwner(event.target.value);
+  }
+  
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    props.newTaskItemHandler({ title: newTaskTitle });
+    props.newTaskItemHandler({ title: newTaskTitle, owner: newTaskOwner, dueDate: newTaskDueDate });
   };
 
   return (
@@ -32,11 +39,11 @@ const NewTaskItemForm = (props) => {
       </div>
       <div>
         <label htmlFor="newTaskDueDateInput">New task due date</label>
-        <input type="date" id="newTaskDueDateInput" />
+        <input onChange={newTaskDueDateHandler} type="date" id="newTaskDueDateInput" />
       </div>
-      <select name="ownerName">
+      <select onChange={newTaskOwnerHandler} name="ownerName">
         {props.owners.map((owner) => (
-          <option value={owner}>{owner}</option>
+          <option value={owner} selected={owner === newTaskOwner}>{owner}</option>
         ))}
       </select>
       <input
