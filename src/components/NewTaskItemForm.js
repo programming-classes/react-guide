@@ -2,31 +2,30 @@ import { useState } from "react/cjs/react.development";
 import "./NewTaskItemForm.css";
 
 const NewTaskItemForm = (props) => {
-  const [newTaskTitle, setNewTaskTitle] = useState("");
-  const [newTaskDueDate, setNewTaskDueDate] = useState("");
-  const [newTaskOwner, setNewTaskOwner] = useState(props.owners[0]);
 
+  const [newTaskItem, setNewTaskItem] = useState({title: "", dueDate: "", owner: props.owners[0]})
+  
   const newTaskTitleChangeHandler = (event) => {
-    setNewTaskTitle(event.target.value);
+    setNewTaskItem({...newTaskItem, title: event.target.value});
   };
   const newTaskDueDateHandler = (event) => {
-    setNewTaskDueDate(event.target.value);
+    setNewTaskItem({...newTaskItem, dueDate: event.target.value});
   }
   
   const newTaskOwnerHandler = (event) =>{
-    setNewTaskOwner(event.target.value);
+    setNewTaskItem({...newTaskItem, owner: event.target.value});
   }
   
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    props.newTaskItemHandler({ title: newTaskTitle, owner: newTaskOwner, dueDate: newTaskDueDate });
+    props.newTaskItemHandler(newTaskItem);
   };
 
   return (
     <form className="input-component" onSubmit={onSubmitHandler}>
       <div>
-        {newTaskTitle.length == 0 ? null : (
+        {newTaskItem.title.length == 0 ? null : (
           <label htmlFor="newTaskTitleInput">New task title</label>
         )}
         <input
@@ -43,12 +42,12 @@ const NewTaskItemForm = (props) => {
       </div>
       <select onChange={newTaskOwnerHandler} name="ownerName">
         {props.owners.map((owner) => (
-          <option value={owner} selected={owner === newTaskOwner}>{owner}</option>
+          <option value={owner} selected={owner === newTaskItem.owner}>{owner}</option>
         ))}
       </select>
       <input
         type="submit"
-        disabled={newTaskTitle === ""}
+        disabled={newTaskItem.title === ""}
         className="input-component__button"
         value="add"
       />
