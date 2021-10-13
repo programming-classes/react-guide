@@ -48,6 +48,7 @@ const NewTaskItemForm = (props) => {
       </select>
       <input
         type="submit"
+        disabled={newTaskTitle === ""}
         className="input-component__button"
         value="whatever"
       />
