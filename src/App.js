@@ -48,7 +48,7 @@ const App = () => {
 
   const newTaskItemHandler = (newTaskItem) => {
     const newTaskList = [
-      { id: Math.random(), title: newTaskItem.title, checked: false },
+      { ...newTaskItem, id: Math.random(), checked: false },
       ...tasks,
     ];
     setTasks(newTaskList);
