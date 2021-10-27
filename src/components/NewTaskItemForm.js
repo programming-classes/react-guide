@@ -20,6 +20,7 @@ const NewTaskItemForm = (props) => {
     event.preventDefault();
 
     props.newTaskItemHandler(newTaskItem);
+    setNewTaskItem({ title:"", dueDate:"", owner: props.owners[0]})
   };
 
   return (
@@ -34,11 +35,12 @@ const NewTaskItemForm = (props) => {
           type="text"
           id="newTaskTitleInput"
           placeholder="New task title"
+          value={newTaskItem.title}
         />
       </div>
       <div>
         <label htmlFor="newTaskDueDateInput">New task due date</label>
-        <input onChange={newTaskDueDateHandler} type="date" id="newTaskDueDateInput" />
+        <input onChange={newTaskDueDateHandler} type="date" id="newTaskDueDateInput" value={newTaskItem.dueDate}/>
       </div>
       <select value={newTaskItem.owner} onChange={newTaskOwnerHandler} name="ownerName">
         {props.owners.map((owner) => (
