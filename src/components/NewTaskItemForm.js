@@ -25,7 +25,7 @@ const NewTaskItemForm = (props) => {
   return (
     <form className="input-component" onSubmit={onSubmitHandler}>
       <div>
-        {newTaskItem.title.length == 0 ? null : (
+        {newTaskItem.title.length === 0 ? null : (
           <label htmlFor="newTaskTitleInput">New task title</label>
         )}
         <input
@@ -40,9 +40,9 @@ const NewTaskItemForm = (props) => {
         <label htmlFor="newTaskDueDateInput">New task due date</label>
         <input onChange={newTaskDueDateHandler} type="date" id="newTaskDueDateInput" />
       </div>
-      <select onChange={newTaskOwnerHandler} name="ownerName">
+      <select value={newTaskItem.owner} onChange={newTaskOwnerHandler} name="ownerName">
         {props.owners.map((owner) => (
-          <option value={owner} selected={owner === newTaskItem.owner}>{owner}</option>
+          <option key={owner} value={owner} >{owner}</option>
         ))}
       </select>
       <input
