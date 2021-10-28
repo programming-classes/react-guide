@@ -1,7 +1,8 @@
 import "./App.css";
-import TaskItem from "./components/TaskItem";
+import TaskList from "./components/TaskList";
 import NewTaskItemForm from "./components/NewTaskItemForm";
 import React, { useState } from "react";
+import FilterTasks from "./components/FilterTasks";
 
 const DUMMY_TASKS = [
   {
@@ -31,8 +32,9 @@ const DUMMY_OWNERS = ["Mesi", "Padre Baez", "Fooaquin"];
 const App = () => {
   const [tasks, setTasks] = useState(DUMMY_TASKS);
   const [ownwers] = useState(DUMMY_OWNERS);
+  const [filter, setFilter] = useState("");
 
-  const deleteTask = (taskId) => {
+  const deleteTaskHandler = (taskId) => {
     const tasksCopy = [...tasks];
     const indexToDelete = tasksCopy.findIndex((task) => task.id === taskId);
     tasksCopy.splice(indexToDelete, 1);
@@ -60,16 +62,13 @@ const App = () => {
         owners={ownwers}
         newTaskItemHandler={newTaskItemHandler}
       />
-      <div className="task-items">
-        {tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            deleteHandler={() => deleteTask(task.id)}
-            checkHandler={() => checkTaskHandler(task.id)}
-          />
-        ))}
-      </div>
+      <FilterTasks onChange={setFilter} />
+      <TaskList
+        tasks={tasks}
+        filter={filter}
+        checkTaskHandler={checkTaskHandler}
+        deleteTaskHandler={deleteTaskHandler}
+      />
     </div>
   );
 };
