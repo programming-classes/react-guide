@@ -2,6 +2,8 @@ import "./App.css";
 import TaskItem from "./components/TaskItem";
 import NewTaskItemForm from "./components/NewTaskItemForm";
 import React, { useState } from "react";
+import FilterTasks from "./components/FilterTasks";
+import TaskList from "./components/TaskList";
 
 const DUMMY_TASKS = [
   {
@@ -32,7 +34,7 @@ const App = () => {
   const [tasks, setTasks] = useState(DUMMY_TASKS);
   const [ownwers] = useState(DUMMY_OWNERS);
 
-  const deleteTask = (taskId) => {
+  const deleteTaskHandler = (taskId) => {
     const tasksCopy = [...tasks];
     const indexToDelete = tasksCopy.findIndex((task) => task.id === taskId);
     tasksCopy.splice(indexToDelete, 1);
@@ -60,16 +62,11 @@ const App = () => {
         owners={ownwers}
         newTaskItemHandler={newTaskItemHandler}
       />
-      <div className="task-items">
-        {tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            deleteHandler={() => deleteTask(task.id)}
-            checkHandler={() => checkTaskHandler(task.id)}
-          />
-        ))}
-      </div>
+      <FilterTasks/>
+      <TaskList tasks={tasks}
+      onDeleteTaskHandler={deleteTaskHandler}
+        onCheckTaskHandler={checkTaskHandler}
+      />
     </div>
   );
 };
