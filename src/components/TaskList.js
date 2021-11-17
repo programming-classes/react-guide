@@ -3,7 +3,7 @@ import TaskItem from "./TaskItem"
 const TaskList = ({tasks, filter, onDeleteTaskHandler, onCheckTaskHandler}) =>{
     return (<div>
         {tasks
-        .filter((task) => task.title.includes(filter.title))
+        .filter((task) => task.title.toUpperCase().includes(filter.title.toUpperCase()))
         .map((task) => (
           <TaskItem
             key={task.id}
