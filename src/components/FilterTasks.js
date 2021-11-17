@@ -1,12 +1,13 @@
 import { useState } from "react";
 
 const FilterTasks = (props) => {
-  const [filter, setFilter] = useState({title: ""});
+  const [filter, setFilter] = useState({ title: "" });
 
   const onTitleChangeHandler = (event) => {
-      setFilter({...filter, title: event.target.value})
+    const newFilter = { ...filter, title: event.target.value };
+    setFilter(newFilter);
 
-      props.onFilterChangeHandler(filter)
+    props.onFilterChangeHandler(newFilter);
   };
 
   return (
