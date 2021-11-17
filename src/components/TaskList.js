@@ -1,7 +1,9 @@
 import TaskItem from "./TaskItem"
-const TaskList = ({tasks, onDeleteTaskHandler, onCheckTaskHandler}) =>{
+const TaskList = ({tasks, filter, onDeleteTaskHandler, onCheckTaskHandler}) =>{
     return (<div>
-        {tasks.map((task) => (
+        {tasks
+        .filter((task) => task.title.includes(filter.title))
+        .map((task) => (
           <TaskItem
             key={task.id}
             task={task}

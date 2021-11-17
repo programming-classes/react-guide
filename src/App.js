@@ -33,6 +33,7 @@ const DUMMY_OWNERS = ["Mesi", "Padre Baez", "Fooaquin"];
 const App = () => {
   const [tasks, setTasks] = useState(DUMMY_TASKS);
   const [ownwers] = useState(DUMMY_OWNERS);
+  const [filter, setFilter] = useState({title: ""})
 
   const deleteTaskHandler = (taskId) => {
     const tasksCopy = [...tasks];
@@ -56,15 +57,21 @@ const App = () => {
     setTasks(newTaskList);
   };
 
+  const onFilterChangeHandler = (filter) =>{
+    setFilter(filter);
+  }
+
   return (
     <div className="app">
       <NewTaskItemForm
         owners={ownwers}
         newTaskItemHandler={newTaskItemHandler}
       />
-      <FilterTasks/>
-      <TaskList tasks={tasks}
-      onDeleteTaskHandler={deleteTaskHandler}
+      <FilterTasks onFilterChangeHandler={onFilterChangeHandler} />
+      <TaskList
+        tasks={tasks}
+        filter={filter}
+        onDeleteTaskHandler={deleteTaskHandler}
         onCheckTaskHandler={checkTaskHandler}
       />
     </div>
